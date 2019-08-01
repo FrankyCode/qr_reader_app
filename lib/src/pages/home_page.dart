@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:qr_reader_app/src/pages/addres_page.dart';
 import 'package:qr_reader_app/src/pages/maps_page.dart';
+import 'package:qr_reader_app/src/providers/db_provider.dart';
 
 import 'package:qrcode_reader/qrcode_reader.dart';
 
@@ -42,7 +43,7 @@ class _HomePageState extends State<HomePage> {
     
     // TODO: https://www.xataka.com/
     // TODO: geo:53.303697011226575,-6.286214737500018
-      String futureString = '';
+      String futureString = 'https://www.xataka.com';
 
       
     /*  
@@ -53,10 +54,12 @@ class _HomePageState extends State<HomePage> {
     }
 
       print('FutureString: $futureString');
-      if(futureString != null){
-        print('TENEMOS INFORMACION');
-      }
+      
     */
+    if(futureString != null){
+        final scan = ScanModel(valor: futureString);
+        DBProvider.db.newScan(scan);
+      }
 
   }
 

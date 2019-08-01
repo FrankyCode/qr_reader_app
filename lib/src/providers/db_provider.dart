@@ -2,8 +2,10 @@ import 'dart:io';
 
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:qr_reader_app/src/models/scan_model.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:qr_reader_app/src/models/scan_model.dart';
+export 'package:qr_reader_app/src/models/scan_model.dart';
+
 
 class DBProvider{
 
@@ -62,7 +64,6 @@ class DBProvider{
   newScan(ScanModel newScan) async {
     final db  = await database;
     final res = await db.insert('Scans', newScan.toJson());
-
     return res;
   }
 
