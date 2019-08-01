@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'package:qr_reader_app/src/pages/addres_page.dart';
 import 'package:qr_reader_app/src/pages/maps_page.dart';
+
+import 'package:qrcode_reader/qrcode_reader.dart';
+
 
 class HomePage extends StatefulWidget {
   @override
@@ -29,9 +33,31 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.filter_center_focus),
         backgroundColor: Theme.of(context).primaryColor,
-        onPressed: () {},
+        onPressed: _scanQR,
       ),
     );
+  }
+
+  _scanQR() async{
+    
+    // TODO: https://www.xataka.com/
+    // TODO: geo:53.303697011226575,-6.286214737500018
+      String futureString = '';
+
+      
+    /*  
+    try{
+      futureString = await new QRCodeReader().scan();
+    }catch(e){
+      futureString = e.toString();
+    }
+
+      print('FutureString: $futureString');
+      if(futureString != null){
+        print('TENEMOS INFORMACION');
+      }
+    */
+
   }
 
   Widget _callPage(int actualPage) {
