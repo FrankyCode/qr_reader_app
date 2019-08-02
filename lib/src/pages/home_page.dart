@@ -1,8 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+
+import 'package:qr_reader_app/src/bloc/scans_bloc.dart';
+import 'package:qr_reader_app/src/models/scan_model.dart';
 
 import 'package:qr_reader_app/src/pages/addres_page.dart';
 import 'package:qr_reader_app/src/pages/maps_page.dart';
-import 'package:qr_reader_app/src/providers/db_provider.dart';
+import 'package:qr_reader_app/src/utils/utils.dart' as utils;
 
 import 'package:qrcode_reader/qrcode_reader.dart';
 
@@ -13,6 +18,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final scansBloc = new ScansBloc();
   int currentIndex = 0;
 
   @override
@@ -23,7 +29,7 @@ class _HomePageState extends State<HomePage> {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.delete_forever),
-            onPressed: () {},
+            onPressed: scansBloc.deleteAllScans,
             
           )
         ],
@@ -34,18 +40,17 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.filter_center_focus),
         backgroundColor: Theme.of(context).primaryColor,
-        onPressed: _scanQR,
+        onPressed: () => _scanQR(context),
       ),
     );
   }
 
-  _scanQR() async{
+  _scanQR(BuildContext context) async{
     
     // TODO: https://www.xataka.com/
-    // TODO: geo:53.303697011226575,-6.286214737500018
+    // TODO: geo:40.724233047051705,-74.00731459101564
       String futureString = 'https://www.xataka.com';
 
-      
     /*  
     try{
       futureString = await new QRCodeReader().scan();
@@ -58,7 +63,19 @@ class _HomePageState extends State<HomePage> {
     */
     if(futureString != null){
         final scan = ScanModel(valor: futureString);
-        DBProvider.db.newScan(scan);
+        scansBloc.addScan(scan);
+
+        final scan2 = ScanModel(valor: 'geo:40.724233047051705,-74.00731459101564');
+        scansBloc.addScan(scan2);
+
+        if(Platform.isIOS){
+          Future.delayed(Duration(milliseconds: 750), (){
+            utils.openScan(context, scan);
+          });
+        }else{
+          utils.openScan(context, scan);
+        }
+        
       }
 
   }

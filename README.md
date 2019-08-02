@@ -5,7 +5,6 @@ A new Flutter project for read QR Code.
 ## Getting Started
 
 This project is a starting point for a Flutter application.
-
 A few resources to get you started if this is your first Flutter project:
 
 - [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
@@ -20,3 +19,10 @@ samples, guidance on mobile development, and a full API reference.
 - [QrCodeReader](https://pub.dev/packages/qrcode_reader)
 - [SQFlite](https://pub.dev/packages/sqflite)
 - [PathProvider](https://pub.dev/packages/path_provider)
+- [UrlLauncher](https://pub.dev/packages/url_launcher)
+- [FlutterMap](https://pub.dev/packages/flutter_map)
+
+
+## API
+
+- [MapBox](https://www.mapbox.com/)

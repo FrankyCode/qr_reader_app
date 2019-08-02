@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qr_reader_app/src/pages/addres_page.dart';
+import 'package:qr_reader_app/src/pages/display_map_page.dart';
 import 'package:qr_reader_app/src/pages/home_page.dart';
 import 'package:qr_reader_app/src/pages/maps_page.dart';
  
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
         'home' : (BuildContext context) => HomePage(),
         'maps' : (BuildContext context) => MapsPage(),
         'addres':(BuildContext context) => AddresPage(),
+        'mapa' : (BuildContext context) => DisplayMapPage(),
       }, 
       theme: ThemeData(
         primaryColor: Colors.deepPurple // Color Primary for all app
