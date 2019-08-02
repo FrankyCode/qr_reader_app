@@ -49,9 +49,10 @@ class _HomePageState extends State<HomePage> {
     
     // TODO: https://www.xataka.com/
     // TODO: geo:40.724233047051705,-74.00731459101564
-      String futureString = 'https://www.xataka.com';
+    // String futureString = 'https://www.xataka.com';
+    String futureString;
 
-    /*  
+     
     try{
       futureString = await new QRCodeReader().scan();
     }catch(e){
@@ -60,13 +61,10 @@ class _HomePageState extends State<HomePage> {
 
       print('FutureString: $futureString');
       
-    */
+    
     if(futureString != null){
         final scan = ScanModel(valor: futureString);
         scansBloc.addScan(scan);
-
-        final scan2 = ScanModel(valor: 'geo:40.724233047051705,-74.00731459101564');
-        scansBloc.addScan(scan2);
 
         if(Platform.isIOS){
           Future.delayed(Duration(milliseconds: 750), (){
